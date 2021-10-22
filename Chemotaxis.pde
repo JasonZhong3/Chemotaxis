@@ -43,7 +43,7 @@ class Meteors
   }
   void walk() {
     myX = myX + (int)(Math.random()*21)-10;
-    myY = myY + (int)(Math.random()*15);
+    myY = myY + (int)(Math.random()*20);
     if (bob[i].myY > 800)
       myY = -100;
   }
