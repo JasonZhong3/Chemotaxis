@@ -1,6 +1,6 @@
 int i = 0;
 int health = 50;
-Meteors [] bob = new Meteors[50];
+Meteors [] bob = new Meteors[100];
 Human joe = new Human();
 void setup()
 {
