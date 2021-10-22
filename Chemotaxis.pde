@@ -1,5 +1,6 @@
 int i = 0;
-boolean gameState = true;
+int health = 50;
+//boolean gameState = true;
 Meteors [] bob = new Meteors[100];
 Human joe = new Human();
 void setup()
@@ -13,29 +14,37 @@ void setup()
 void draw()
 {
   //move and show the bacteria
+  //while (gameState == true) {
   background(0);
   fill(0, 255, 0);
   rect(0, 700, 1000, 700);
-  while (gameState == true) {
-    for (i = 0; i < bob.length; i++) {
-      bob[i].walk();
-      bob[i].show();
-      joe.gameOver();
+  fill(0, 0, 0);
+  text("# of hits: " + health, 300, 700, 100);
+  for (i = 0; i < bob.length; i++) {
+    bob[i].walk();
+    bob[i].show();
+    if (dist(bob[i].myX, bob[i].myY, joe.x, joe.y) < 25) {
+      background(255, 0, 0);
+      health--;
     }
-    joe.move();
-    joe.show();
   }
+  joe.move();
+  joe.show();
+  joe.gameOver();
 }
+//}
 class Meteors
 {
   int myX, myY;
   Meteors() {
     myX = (int)(Math.random()*1000);
-    myY = (int)(Math.random()*1000)-1000;
+    myY = (int)(Math.random()*2000)-2000;
   }
   void walk() {
-    myX = myX + (int)(Math.random()*10)-5;
+    myX = myX + (int)(Math.random()*21)-10;
     myY = myY + (int)(Math.random()*15);
+    if (bob[i].myY > 800)
+      myY = -100;
   }
   void show() {
     fill(255, 0, 0);
@@ -50,10 +59,10 @@ class Human
   int x = 540;
   int y = 665;
   void move() {
-    if (mouseX > x)
-      x += (int)(Math.random()*15);
+    if (mouseX >= x)
+      x += (int)(Math.random()*10);
     else
-      x -= (int)(Math.random()*15);
+      x -= (int)(Math.random()*10);
   }
   void show() {
     fill(255, 255, 255);
@@ -66,10 +75,11 @@ class Human
     line(x, 685, x+5, 700);
   }
   void gameOver() {
-    if (dist(bob[i].myX, bob[i].myY, joe.x, joe.y) < 25) {
-      gameState = false;
-      background(255, 255, 255);
-      text("GAME OVER!", 450, 375, 250);
+    if (health <= 0) {
+      background(0);
+      fill(255, 0, 0);
+      text("GAME OVER!", 475, 400, 500);
     }
+    //gameState = false;
   }
 }
