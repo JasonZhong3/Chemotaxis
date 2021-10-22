@@ -60,9 +60,9 @@ class Human
   int y = 665;
   void move() {
     if (mouseX >= x)
-      x += (int)(Math.random()*10);
+      x += (int)(Math.random()*25);
     else
-      x -= (int)(Math.random()*10);
+      x -= (int)(Math.random()*25);
   }
   void show() {
     fill(255, 255, 255);
