@@ -22,8 +22,8 @@ void draw()
   text("# of hits: " + health, 300, 700, 100);
   //stars
   fill(255,255,0);
-  for(int i = 0; i < 50; i++)
-    ellipse((int)(Math.random()*1000), (int)(Math.random()*800), 5, 5);
+  for(int i = 0; i < 25; i++)
+  ellipse((int)(Math.random()*1000), (int)(Math.random()*800), 5, 5);
 
   //falling meteors!!
   for (i = 0; i < bob.length; i++) {
